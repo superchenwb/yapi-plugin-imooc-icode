@@ -12,7 +12,11 @@ module.exports = function () {
     if (result.data.code !== 1000) {
       mockJson.status = -100;
       mockJson.msg = '请在请求头中添加本门课程的icode';
-      mockJson.data = null;
+      if (Array.isArray(mockJson.data)) {
+        mockJson.data = [];
+      } else {
+        mockJson.data = {};
+      }
     }
   });
 };
